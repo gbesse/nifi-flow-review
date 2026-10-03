@@ -1,0 +1,1 @@
+{"flowContents":{"processors":[{"identifier":"route","type":"org.apache.nifi.processors.standard.RouteOnAttribute","properties":{"Routing Strategy":"Route to Property name","Password":"changed-example-only"},"autoTerminatedRelationships":["failure"]}],"connections":[{"source":{"id":"route"},"destination":{"id":"success"},"selectedRelationships":["failure"]}]}}
