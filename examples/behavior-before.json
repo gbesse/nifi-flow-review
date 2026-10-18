@@ -1,0 +1,27 @@
+{
+  "flowContents": {
+    "processors": [
+      {
+        "identifier": "source",
+        "schedulingPeriod": "1 sec",
+        "schedulingStrategy": "TIMER_DRIVEN"
+      }
+    ],
+    "connections": [
+      {
+        "identifier": "queue",
+        "source": {
+          "id": "source"
+        },
+        "destination": {
+          "id": "sink"
+        },
+        "selectedRelationships": [
+          "success"
+        ],
+        "flowFileExpiration": "0 sec",
+        "backPressureObjectThreshold": 10000
+      }
+    ]
+  }
+}
