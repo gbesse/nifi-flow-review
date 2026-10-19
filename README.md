@@ -42,3 +42,11 @@ FR : [Guide Apache NiFi](https://nifi.apache.org/docs/nifi-docs/html/user-guide.
 EN: [Apache NiFi guide](https://nifi.apache.org/docs/nifi-docs/html/user-guide.html), expiration and backpressure. [NiFi Lens](https://github.com/maltesander/nifi-lens) is a neighboring cluster-inspection tool; no integration is supplied.
 
 ES: [Guía Apache NiFi](https://nifi.apache.org/docs/nifi-docs/html/user-guide.html), caducidad y backpressure. [NiFi Lens](https://github.com/maltesander/nifi-lens) es una herramienta vecina para inspeccionar clusters; no se proporciona integración.
+
+## Implémentations et services / Implementations and services / Implementaciones y servicios
+
+FR — La revue détecte aussi le type et le bundle des processeurs, les changements des services contrôleurs (`type`, `bundle`, `enabled`, `properties`) et les extrémités/relations des connexions, même sans relation sélectionnée. Seuls identifiants et noms de champs sont affichés, jamais les valeurs. Le drapeau `--fail-on-behavior-change` couvre ces différences et les services sans identifiant. Ce périmètre structurel explicite ne valide ni un démarrage NiFi ni les effets métier.
+
+EN — Review also detects processor type/bundle changes, controller-service changes (`type`, `bundle`, `enabled`, `properties`) and connection endpoints/relationships, including connections with no selected relationship. Only identifiers and field names are reported, never values. `--fail-on-behavior-change` covers these changes and unidentified services. This declared structural scope validates neither NiFi startup nor business effects.
+
+ES — La revisión también detecta tipo/bundle de procesadores, servicios controladores (`type`, `bundle`, `enabled`, `properties`) y extremos/relaciones de conexiones, incluso sin relaciones seleccionadas. Solo muestra identificadores y nombres de campos, nunca valores. `--fail-on-behavior-change` cubre estas diferencias y servicios sin identificador. El alcance estructural no valida arranque NiFi ni efectos de negocio.
