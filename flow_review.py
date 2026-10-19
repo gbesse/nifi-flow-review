@@ -8,8 +8,9 @@ import json
 from pathlib import Path
 
 # Names only: values never enter reports. These lists intentionally declare the scope.
-PROCESSOR_BEHAVIOR_FIELDS = ("schedulingPeriod", "schedulingStrategy", "executionNode", "concurrentlySchedulableTaskCount", "runDurationMillis", "penaltyDuration", "yieldDuration", "scheduledState", "retryCount", "retriedRelationships", "backoffMechanism", "maxBackoffPeriod")
-CONNECTION_BEHAVIOR_FIELDS = ("flowFileExpiration", "backPressureObjectThreshold", "backPressureDataSizeThreshold", "prioritizers", "loadBalanceStrategy", "partitioningAttribute", "loadBalanceCompression")
+PROCESSOR_BEHAVIOR_FIELDS = ("type", "bundle", "schedulingPeriod", "schedulingStrategy", "executionNode", "concurrentlySchedulableTaskCount", "runDurationMillis", "penaltyDuration", "yieldDuration", "scheduledState", "retryCount", "retriedRelationships", "backoffMechanism", "maxBackoffPeriod")
+CONTROLLER_SERVICE_FIELDS = ("type", "bundle", "enabled", "properties")
+CONNECTION_BEHAVIOR_FIELDS = ("source", "destination", "selectedRelationships", "flowFileExpiration", "backPressureObjectThreshold", "backPressureDataSizeThreshold", "prioritizers", "loadBalanceStrategy", "partitioningAttribute", "loadBalanceCompression")
 MISSING = object()
 
 
@@ -57,7 +58,7 @@ def behavior_changes(before, after):
             nonlocal unchecked
             if not isinstance(group, dict):
                 raise ValueError("Groupe invalide / Invalid group / Grupo no válido")
-            for kind, fields in (("processors", PROCESSOR_BEHAVIOR_FIELDS), ("connections", CONNECTION_BEHAVIOR_FIELDS)):
+            for kind, fields in (("processors", PROCESSOR_BEHAVIOR_FIELDS), ("connections", CONNECTION_BEHAVIOR_FIELDS), ("controllerServices", CONTROLLER_SERVICE_FIELDS)):
                 items = group.get(kind, [])
                 if not isinstance(items, list):
                     raise ValueError("Liste de composants invalide / Invalid component list / Lista de componentes no válida")
