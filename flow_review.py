@@ -191,3 +191,17 @@ def main(argv=None):
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+def routing_obligations(document,required_relationships):
+    error='Relations requises invalides / Invalid required relationships / Relaciones requeridas inválidas'
+    processors,routes=collect(document)
+    if not isinstance(required_relationships,dict)or len(required_relationships)>10000:raise ValueError(error)
+    findings=[];checked=0
+    for processor,relationships in required_relationships.items():
+        if processor not in processors or not isinstance(relationships,list)or len(set(relationships))!=len(relationships)or any(not isinstance(x,str)or not x for x in relationships):raise ValueError(error)
+        auto=set(processors[processor].get('autoTerminatedRelationships')or[])
+        for relationship in relationships:
+            checked+=1;destinations=sorted({d for s,r,d in routes if s==processor and r==relationship});terminated=relationship in auto
+            if not destinations and not terminated:findings.append({'processor':processor,'relationship':relationship,'code':'unrouted_required_relationship'})
+            elif destinations and terminated:findings.append({'processor':processor,'relationship':relationship,'code':'routed_and_auto_terminated'})
+    return {'checked':checked,'findings':findings,'property_values_included':False,'nifi_runtime_executed':False}
