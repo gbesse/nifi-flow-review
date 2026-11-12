@@ -50,3 +50,12 @@ FR — La revue détecte aussi le type et le bundle des processeurs, les changem
 EN — Review also detects processor type/bundle changes, controller-service changes (`type`, `bundle`, `enabled`, `properties`) and connection endpoints/relationships, including connections with no selected relationship. Only identifiers and field names are reported, never values. `--fail-on-behavior-change` covers these changes and unidentified services. This declared structural scope validates neither NiFi startup nor business effects.
 
 ES — La revisión también detecta tipo/bundle de procesadores, servicios controladores (`type`, `bundle`, `enabled`, `properties`) y extremos/relaciones de conexiones, incluso sin relaciones seleccionadas. Solo muestra identificadores y nombres de campos, nunca valores. `--fail-on-behavior-change` cubre estas diferencias y servicios sin identificador. El alcance estructural no valida arranque NiFi ni efectos de negocio.
+
+
+## 2026-11-12 — FR / EN / ES
+
+FR : Vérifier les relations NiFi explicitement requises : routage absent ou terminaison contradictoire, sans publier les propriétés.
+
+EN: Check explicitly required NiFi relationships for missing routing or conflicting termination without exposing property values.
+
+ES: Verificar relaciones NiFi requeridas con rutas ausentes o terminación contradictoria sin exponer propiedades.
